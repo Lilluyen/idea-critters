@@ -1,0 +1,29 @@
+.create_idea {
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    transform: translateX(-50%);
+
+    background-color: transparent;
+    background-position: center;
+    border: none;
+    height: 200px;
+    width: 200px;
+}
+
+.create_idea:hover {
+    cursor: pointer;
+}
+
+.create_idea img {
+    object-fit: contain;
+    background-color: inherit;
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.2s ease;
+}
+
+.create_idea:hover img {
+    transform: scale(1.1);
+}

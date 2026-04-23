@@ -1,0 +1,7 @@
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/assets/imgs/critters-bg.jpeg');
+
+  position: relative;
+}

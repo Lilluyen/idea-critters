@@ -1,10 +1,13 @@
 import "./App.css";
 import CreateIdea from "./components/CreateIdea";
+import Critters from "./components/Critters";
 
 function App() {
+  function handleGenerateCritter() {}
   return (
     <div className="background">
-      <CreateIdea />
+      <Critters />
+      <CreateIdea onGenerateCritter={handleGenerateCritter} />
     </div>
   );
 }

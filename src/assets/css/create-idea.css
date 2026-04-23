@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Unkempt&family=Love+Ya+Like+A+Sister&display=swap');
+
 .create_idea {
     position: absolute;
     left: 50%;
     bottom: 25px;
+    z-index: 10;
     transform: translateX(-50%);
 
     background-color: transparent;
     background-position: center;
     border: none;
+    outline: none;
     height: 200px;
     width: 200px;
 }
@@ -20,10 +24,126 @@
     background-color: inherit;
     width: 100%;
     height: 100%;
+    border: none;
 
-    transition: transform 0.2s ease;
+    transition: 0.2s ease;
 }
 
-.create_idea:hover img {
+.img-hover {
+    opacity: 0;
+    display: none;
+}
+
+.create_idea:hover .img-hover {
+    opacity: 1;
+    display: inline;
     transform: scale(1.1);
+}
+
+.create_idea:hover .img-default {
+    opacity: 0;
+    display: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+
+    padding: 32px;
+    border-radius: 10px;
+    height: 280px;
+    width: 450px;
+    background-color: #FFF8E7;
+}
+
+.modal-overlay span {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 32px;
+}
+
+.modal-overlay span:hover {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    animation: pop 0.1s ease;
+}
+
+.modal input,
+textarea {
+    height: 20px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #0000001a;
+}
+
+input::placeholder {
+    font-family: 'Unkempt', cursive;
+    color: gray;
+    font-size: 18px;
+}
+
+textarea::placeholder {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 16px;
+}
+
+.modal textarea {
+    border: none;
+    height: 130px;
+    box-sizing: border-box;
+}
+
+.modal .save {
+    background-color: #ff9400;
+    display: block;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    height: 40px;
+    width: 100px;
+    padding: 10px 32px;
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 18px;
+}
+
+.modal .save:hover {
+    cursor: pointer;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+@keyframes hide {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
 }

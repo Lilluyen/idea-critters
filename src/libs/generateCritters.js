@@ -1,10 +1,32 @@
+function img(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
 
-const generateCritters = () => {
-    const modules = import.meta.glob('public/assets/imgs/critters/*.avif', {
+const generateCritters = (title, des) => {
+    const modules = import.meta.glob('/src/assets/imgs/critters/*.png', {
         eager: true,
     });
-    console.log(modules)
 
+    const imgArray = Object.values(modules).map(mob => mob.default);
+    const ideas = JSON.parse(localStorage.getItem('ideas')) ?? [];
+
+    const position = {
+        x: Math.random() * (window.innerWidth - 300),
+        y: Math.random() * (window.innerHeight - 300)
+    }
+
+    const newIdea = {
+        id: Date.now(),
+        src: img(imgArray),
+        title: title,
+        des: des,
+        position: position
+    };
+
+    ideas.push(newIdea);
+    console.log(ideas);
+    return newIdea;
 }
+
 
 export default generateCritters

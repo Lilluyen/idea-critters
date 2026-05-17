@@ -5,10 +5,18 @@ const CreateIdea = ({ onGenerateCritter }) => {
   const [openModal, setOpenModal] = useState(false);
   const [title, setTitle] = useState("");
   const [des, setDes] = useState("");
-  function handleSubmit() {
-    onGenerateCritter();
 
-    if (des.trim().length > 0) setOpenModal(false);
+  function resetInput() {
+    setTitle("");
+    setDes("");
+  }
+
+  function handleSubmit() {
+    if (des.trim().length > 0) {
+      onGenerateCritter(title, des);
+      setOpenModal(false);
+      resetInput();
+    }
   }
 
   useEffect(() => {
@@ -17,6 +25,7 @@ const CreateIdea = ({ onGenerateCritter }) => {
     function handleEscape(e) {
       if (e.key === "Escape") {
         setOpenModal(false);
+        resetInput();
       }
     }
 
@@ -44,8 +53,14 @@ const CreateIdea = ({ onGenerateCritter }) => {
 
       {openModal && (
         <div className="modal-overlay">
-          <span onClick={() => setOpenModal(false)}>&times;</span>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <span
+              onClick={() => {
+                setOpenModal(false);
+                resetInput();
+              }}>
+              &times;
+            </span>
             <input
               type="text"
               placeholder="Title (optional)"

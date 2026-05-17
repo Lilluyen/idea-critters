@@ -87,6 +87,14 @@ textarea {
     background-color: transparent;
     border: none;
     border-bottom: 3px solid #0000001a;
+    font-family: 'Unkempt', cursive;
+    font-size: 16px;
+    resize: none;
+}
+
+.modal input:focus,
+textarea:focus {
+    outline: none;
 }
 
 input::placeholder {

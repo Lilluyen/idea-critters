@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Unkempt&family=Love+Ya+Like+A+Sister&display=swap');
 
 .critters-container {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 .critter-ideas {
@@ -16,6 +16,7 @@
     cursor: pointer;
     scale: 1.1;
 }
+
 
 .critter-idea-content {
     display: flex;
@@ -31,6 +32,7 @@
     height: 200px;
     width: 200px;
     object-fit: cover;
+    pointer-events: none;
 }
 
 .bob-animation {
@@ -51,6 +53,10 @@
 }
 
 .critter-idea-desc {
+    position: absolute;
+    z-index: -1;
+    bottom: -10px;
+
     background-color: #FFF8E7;
     padding: 7px 15px;
     border-radius: 20px;
@@ -65,4 +71,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+
 }

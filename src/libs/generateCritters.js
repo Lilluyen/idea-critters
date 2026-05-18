@@ -24,7 +24,6 @@ const generateCritters = (title, des) => {
     };
 
     ideas.push(newIdea);
-    console.log(ideas);
     return newIdea;
 }
 

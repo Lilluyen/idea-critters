@@ -7,9 +7,10 @@ const Effects = ({ effects }) => {
         position: "absolute",
         left: `${effects[0].x}px`,
         top: `${effects[0].y}px`,
-        height: "310px",
-        width: "310px",
+        height: "210px",
+        width: "210px",
         zIndex: "2",
+        scale: "1.3",
         pointerEvents: "none",
       }}>
       <img
@@ -18,7 +19,7 @@ const Effects = ({ effects }) => {
         style={{
           height: "100%",
           width: "100%",
-          objectFit: "cover",
+          objectFit: "contain",
           pointerEvents: "none",
         }}
       />

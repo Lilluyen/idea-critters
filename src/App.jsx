@@ -12,7 +12,6 @@ function App() {
   });
 
   const [effects, setEffects] = useState([]);
-
   function handleGenerateCritter(title, des) {
     const newIdea = generateCritters(title, des);
     saveToLocalStorage([...critters, newIdea]);

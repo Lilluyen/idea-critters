@@ -11,8 +11,8 @@ const generateCritters = (title, des) => {
     const ideas = JSON.parse(localStorage.getItem('ideas')) ?? [];
 
     const position = {
-        x: Math.random() * (window.innerWidth - 300),
-        y: Math.random() * (window.innerHeight - 300)
+        x: Math.random() * (window.innerWidth - 200),
+        y: Math.random() * (window.innerHeight - 200)
     }
 
     const newIdea = {

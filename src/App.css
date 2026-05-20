@@ -4,4 +4,7 @@
   background-image: url('/assets/imgs/critters-bg.jpeg');
 
   position: relative;
+
+  box-sizing: border-box;
+  overflow: hidden;
 }

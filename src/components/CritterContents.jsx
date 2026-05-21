@@ -20,29 +20,31 @@ const CritterContents = ({ idea }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      let shouldFlip = false;
       setPosition((prev) => {
-        const size = 199;
+        const sizeY = 192;
+        const sizeX = 160;
         let newX = prev.x + velocity.x;
         let newY = prev.y + velocity.y;
         let vx = velocity.x;
         let vy = velocity.y;
 
-        if (newX <= 0) {
+        if (newX <= -40) {
           newX = 0;
           vx = Math.abs(vx);
-          setFlipped(true);
-        } else if (newX >= window.innerWidth - size) {
-          newX = window.innerWidth - size;
+          shouldFlip = true;
+        } else if (newX >= window.innerWidth - sizeX) {
+          newX = window.innerWidth - sizeX - 50;
           vx = -Math.abs(vx);
-          setFlipped(true);
+          shouldFlip = true;
         }
 
         if (newY <= 0) {
           vy = Math.abs(vy);
           newY = 0;
-        } else if (newY >= window.innerHeight - size) {
+        } else if (newY >= window.innerHeight - sizeY) {
           vy = -Math.abs(vy);
-          newY = window.innerHeight - size;
+          newY = window.innerHeight - sizeY;
         }
 
         if (vx !== velocity.x || vy !== velocity.y) {
@@ -52,14 +54,15 @@ const CritterContents = ({ idea }) => {
           });
         }
 
-        if (Math.random() < 0.0005) {
-          setFlipped((fl) => !fl);
+        if (Math.random() < 0.0007) {
+          shouldFlip = true;
         }
         return {
           x: newX,
           y: newY,
         };
       });
+      if (shouldFlip) setFlipped((fl) => !fl);
     }, 16);
 
     return () => clearInterval(interval);
@@ -82,7 +85,7 @@ const CritterContents = ({ idea }) => {
             alt="idea"
             className="critter-idea-imgs"
             style={{
-              transform: flipped ? "scaleX(-1)" : "scaleX(1)",
+              transform: `scaleX(${flipped ? "-1" : "1"})`,
             }}
           />
         </div>

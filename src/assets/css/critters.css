@@ -8,7 +8,7 @@
 }
 
 .critter-ideas {
-    transition: 0.25s;
+    transition: 0.1s;
     background-color: transparent;
     border: none;
     outline: none;
@@ -41,7 +41,7 @@
 }
 
 .bob-animation {
-    animation: bob 1s ease-in-out infinite;
+    animation: bob 0.7s ease-in-out infinite;
 }
 
 @keyframes bob {

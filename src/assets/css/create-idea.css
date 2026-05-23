@@ -46,18 +46,12 @@
 }
 
 .modal-overlay {
-    position: fixed;
-    background-color: #fff;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     z-index: 11;
-
-    padding: 32px;
-    border-radius: 10px;
-    height: 280px;
-    width: 450px;
-    background-color: #FFF8E7;
+    height: 100%;
+    width: 100%;
+    top: -100%;
+    background-color: transparent;
 }
 
 .modal-overlay span {
@@ -73,11 +67,22 @@
 }
 
 .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 32px;
+    border-radius: 10px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 30px;
-    animation: pop 0.1s ease;
+
+    height: 280px;
+    width: 450px;
+    background-color: #FFF8E7;
 }
 
 .modal input,
@@ -131,18 +136,6 @@ textarea::placeholder {
     cursor: pointer;
 }
 
-@keyframes pop {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-}
 
 @keyframes hide {
     from {

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Unkempt&family=Love+Ya+Like+A+Sister&display=swap');
+
+.critter-content-overlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    top: -100%;
+    background-color: transparent;
+}
+
+.critter-content-modal {
+    background-color: #FFF8E7;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    height: 115px;
+    width: 310px;
+    padding: 32px;
+
+}
+
+.critter-content-modal h3 {
+    margin: 0;
+    font-family: 'Unkempt', cursive;
+    font-size: 1.3rem;
+    padding: 0 5px 10px 5px;
+    border-bottom: 3px solid oklch(87.2% .01 258.338);
+}
+
+.critter-content-modal p {
+    font-family: 'Unkempt', cursive;
+    font-size: 1.1rem;
+}
+
+.content-btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-action-group-btn {
+    display: flex;
+    gap: 3px;
+}
+
+button {
+    transition: 0.15s;
+    font-family: 'Unkempt',
+        cursive;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.complete-btn {
+    background-color: #00c951;
+
+}
+
+.complete-btn:hover {
+    background-color: #016c28;
+}
+
+.close-btn {
+    background-color: #d1d5dc;
+    color: #1e2939;
+}
+
+.close-btn:hover {
+    background-color: #898c8f;
+}
+
+
+.edit-btn {
+    background-color: #ff9b5e;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background-color: #f77423;
+}
+
+.delete-btn {
+    background-color: #ff8087;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #fa4f58;
+}

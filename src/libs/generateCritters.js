@@ -20,7 +20,8 @@ const generateCritters = (title, des) => {
         src: img(imgArray),
         title: title,
         des: des,
-        position: position
+        position: position,
+        isCompleted: false
     };
 
     ideas.push(newIdea);

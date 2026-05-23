@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-const CritterContents = ({ idea }) => {
+const CritterContents = ({ idea, handleOpenActionModal, isPaused }) => {
   const [position, setPosition] = useState({
     x: idea.position.x,
     y: idea.position.y,
@@ -17,8 +16,9 @@ const CritterContents = ({ idea }) => {
   });
 
   const [flipped, setFlipped] = useState(false);
-
   useEffect(() => {
+    // console.log(isPaused);
+    if (isPaused) return;
     const interval = setInterval(() => {
       let shouldFlip = false;
       setPosition((prev) => {
@@ -66,35 +66,42 @@ const CritterContents = ({ idea }) => {
     }, 16);
 
     return () => clearInterval(interval);
-  }, [velocity]);
+  }, [velocity, isPaused]);
+
+  function openActionModal() {
+    handleOpenActionModal(idea);
+  }
 
   return (
-    <button
-      className="critter-ideas bob-animation"
-      style={{
-        position: "absolute",
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        willChange: "transform",
-        userSelect: "none",
-      }}>
-      <div className="critter-idea-content">
-        <div className="critter-idea-img-container">
-          <img
-            src={idea.src}
-            alt="idea"
-            className="critter-idea-imgs"
-            style={{
-              transform: `scaleX(${flipped ? "-1" : "1"})`,
-            }}
-          />
-        </div>
+    <>
+      <button
+        className="critter-ideas bob-animation"
+        style={{
+          position: "absolute",
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          willChange: "transform",
+          userSelect: "none",
+        }}
+        onClick={() => openActionModal()}>
+        <div className="critter-idea-content">
+          <div className="critter-idea-img-container">
+            <img
+              src={idea.src}
+              alt="idea"
+              className="critter-idea-imgs"
+              style={{
+                transform: `scaleX(${flipped ? "-1" : "1"})`,
+              }}
+            />
+          </div>
 
-        <div className="critter-idea-desc">
-          <span>{idea.title || "New Idea"}</span>
+          <div className="critter-idea-desc">
+            <span>{idea.title || "New Idea"}</span>
+          </div>
         </div>
-      </div>
-    </button>
+      </button>
+    </>
   );
 };
 

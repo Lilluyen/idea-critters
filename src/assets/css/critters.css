@@ -40,6 +40,18 @@
     pointer-events: none;
 }
 
+.critter-idea-completed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    outline: inherit;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
 .bob-animation {
     animation: bob 0.7s ease-in-out infinite;
 }

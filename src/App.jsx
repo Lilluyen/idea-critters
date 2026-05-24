@@ -10,6 +10,8 @@ import Effects from "./components/Effects";
 import ActionModal from "./components/ActionModal";
 import CreateIdeaModal from "./components/CreateIdeaModal";
 import editIdea from "./libs/editIdea";
+import completeIdea from "./libs/completeIdea";
+import unCompleteIdea from "./libs/unCompleteIdea";
 
 function App() {
   const [critters, setCritters] = useState(() => {
@@ -75,7 +77,20 @@ function App() {
     setSelectedIdea(null);
   }
 
-  function handleCompleted() {}
+  function handleCompleted() {
+    let updatedIdeas = null;
+    if (!selectedIdea.isCompleted) {
+      updatedIdeas = completeIdea(selectedIdea.id);
+    }
+    if (selectedIdea.isCompleted) {
+      updatedIdeas = unCompleteIdea(selectedIdea.id);
+    }
+    if (updatedIdeas) {
+      setCritters(updatedIdeas);
+      setIsShowActionModal(false);
+      setSelectedIdea(null);
+    }
+  }
   function handleOpenActionModal(idea) {
     setSelectedIdea(idea);
     setIsShowActionModal(true);

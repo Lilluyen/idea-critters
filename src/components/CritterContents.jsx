@@ -94,6 +94,13 @@ const CritterContents = ({ idea, handleOpenActionModal, isPaused }) => {
                 transform: `scaleX(${flipped ? "-1" : "1"})`,
               }}
             />
+            {idea.isCompleted && (
+              <img
+                src="/assets/imgs/completed.png"
+                alt="completed"
+                className="critter-idea-completed"
+              />
+            )}
           </div>
 
           <div className="critter-idea-desc">

@@ -3,7 +3,6 @@ import saveToLocalStorage from "./saveToLocalStorage";
 const editIdea = (id, title, desc) => {
     const ideas = JSON.parse(localStorage.getItem('ideas') || '[]');
     const updatedIdea = searchIdea(id, ideas);
-    console.log(updatedIdea)
     if (!updatedIdea) return null;
     updatedIdea.title = title;
     updatedIdea.des = desc;
@@ -11,7 +10,7 @@ const editIdea = (id, title, desc) => {
     return ideas;
 }
 
-function searchIdea(id, ideas) {
+export function searchIdea(id, ideas) {
     let left = 0;
     let right = ideas.length - 1;
     while (left <= right) {

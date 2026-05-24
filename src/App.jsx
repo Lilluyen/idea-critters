@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import "./assets/css/create-idea.css";
 
@@ -9,6 +9,7 @@ import saveToLocalStorage from "./libs/saveToLocalStorage";
 import Effects from "./components/Effects";
 import ActionModal from "./components/ActionModal";
 import CreateIdeaModal from "./components/CreateIdeaModal";
+import editIdea from "./libs/editIdea";
 
 function App() {
   const [critters, setCritters] = useState(() => {
@@ -19,6 +20,8 @@ function App() {
   const [selectedIdea, setSelectedIdea] = useState(null);
   const [isShowActionModal, setIsShowActionModal] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+
   function handleGenerateCritter(title, des) {
     const newIdea = generateCritters(title, des);
     setEffects((prev) => [
@@ -40,35 +43,35 @@ function App() {
     }, 1500);
   }
 
+  function handleEditIdea(title, desc) {
+    const updatedIdeas = editIdea(selectedIdea.id, title, desc);
+    if (updatedIdeas) {
+      setCritters(updatedIdeas);
+      setIsOpenModal(false);
+      setIsShowActionModal(false);
+      setSelectedIdea(null);
+    }
+  }
+
   function handleOpenModal() {
     setIsOpenModal(true);
   }
-
-  useEffect(() => {
-    if (!isOpenModal) return;
-
-    function handleEscape(e) {
-      if (e.key === "Escape") {
-        setIsOpenModal(false);
-      }
-    }
-
-    window.addEventListener("keydown", handleEscape);
-
-    return () => {
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, [isOpenModal]);
 
   function handleDelete() {}
 
   function handleEdit() {
     setIsOpenModal(true);
+    setIsEdit(true);
   }
 
   function handleClose() {
-    setIsShowActionModal(false);
+    if (isEdit) {
+      setIsOpenModal(false);
+      setIsEdit(false);
+      return;
+    }
     setIsOpenModal(false);
+    setIsShowActionModal(false);
     setSelectedIdea(null);
   }
 
@@ -102,6 +105,8 @@ function App() {
           onGenerateCritter={handleGenerateCritter}
           onClose={handleClose}
           selectedIdea={selectedIdea}
+          onEditIdea={handleEditIdea}
+          isEdit={isEdit}
         />
       )}
     </div>

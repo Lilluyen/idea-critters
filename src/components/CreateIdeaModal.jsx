@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-const CreateIdeaModal = ({ selectedIdea, onGenerateCritter, onClose }) => {
+const CreateIdeaModal = ({
+  selectedIdea,
+  onGenerateCritter,
+  onEditIdea,
+  onClose,
+  isEdit,
+}) => {
   const [title, setTitle] = useState(selectedIdea?.title ?? "");
   const [des, setDes] = useState(selectedIdea?.des ?? "");
 
@@ -11,6 +17,14 @@ const CreateIdeaModal = ({ selectedIdea, onGenerateCritter, onClose }) => {
   function handleSubmit() {
     if (des.trim().length > 0) {
       onGenerateCritter(title, des);
+      resetInput();
+      onClose();
+    }
+  }
+
+  function handleEdit() {
+    if (des.trim().length > 0) {
+      onEditIdea(title, des);
       resetInput();
       onClose();
     }
@@ -36,7 +50,7 @@ const CreateIdeaModal = ({ selectedIdea, onGenerateCritter, onClose }) => {
           placeholder="Write your idea here ..."
           value={des}
           onChange={(e) => setDes(e.target.value)}></textarea>
-        <button className="save" onClick={handleSubmit}>
+        <button className="save" onClick={isEdit ? handleEdit : handleSubmit}>
           Save
         </button>
       </div>

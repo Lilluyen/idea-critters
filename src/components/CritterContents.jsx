@@ -39,10 +39,10 @@ const CritterContents = ({ idea, handleOpenActionModal, isPaused }) => {
           shouldFlip = true;
         }
 
-        if (newY <= 0) {
+        if (newY <= -60) {
           vy = Math.abs(vy);
-          newY = 0;
-        } else if (newY >= window.innerHeight - sizeY) {
+          newY = -20;
+        } else if (newY >= window.innerHeight - sizeY + 40) {
           vy = -Math.abs(vy);
           newY = window.innerHeight - sizeY;
         }

@@ -12,6 +12,7 @@ import CreateIdeaModal from "./components/CreateIdeaModal";
 import editIdea from "./libs/editIdea";
 import completeIdea from "./libs/completeIdea";
 import unCompleteIdea from "./libs/unCompleteIdea";
+import deleteIdeaFromLocalStorage from "./libs/deleteIdeaFromLocalStorage";
 
 function App() {
   const [critters, setCritters] = useState(() => {
@@ -23,6 +24,7 @@ function App() {
   const [isShowActionModal, setIsShowActionModal] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [position, setPosition] = useState({});
 
   function handleGenerateCritter(title, des) {
     const newIdea = generateCritters(title, des);
@@ -59,7 +61,24 @@ function App() {
     setIsOpenModal(true);
   }
 
-  function handleDelete() {}
+  function handleDelete() {
+    const updatedIdeas = deleteIdeaFromLocalStorage(selectedIdea);
+    if (updatedIdeas) setCritters(updatedIdeas);
+    setIsOpenModal(false);
+    setIsShowActionModal(false);
+    setSelectedIdea(null);
+    setEffects((prev) => [
+      ...prev,
+      {
+        id: selectedIdea.id,
+        x: position.x,
+        y: position.y,
+      },
+    ]);
+    setTimeout(() => {
+      setEffects((prev) => prev.filter((e) => e.id !== selectedIdea.id));
+    }, 1500);
+  }
 
   function handleEdit() {
     setIsOpenModal(true);
@@ -91,9 +110,10 @@ function App() {
       setSelectedIdea(null);
     }
   }
-  function handleOpenActionModal(idea) {
+  function handleOpenActionModal(idea, position) {
     setSelectedIdea(idea);
     setIsShowActionModal(true);
+    setPosition(position);
   }
   return (
     <div className="background">

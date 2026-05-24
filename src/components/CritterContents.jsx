@@ -69,7 +69,7 @@ const CritterContents = ({ idea, handleOpenActionModal, isPaused }) => {
   }, [velocity, isPaused]);
 
   function openActionModal() {
-    handleOpenActionModal(idea);
+    handleOpenActionModal(idea, position);
   }
 
   return (

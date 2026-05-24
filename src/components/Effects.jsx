@@ -1,5 +1,4 @@
 const Effects = ({ effects }) => {
-  console.log(effects);
   return (
     <div
       className="boom"
